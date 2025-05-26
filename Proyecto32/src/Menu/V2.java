@@ -72,7 +72,6 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 	private JLabel lblCodigoDelPeluche_2;
 	private JComboBox cboTipoVenta;
 	private JTextArea txtS;
-	private JButton btnAñadirVenta;
 
 	/**
 	 * Launch the application.
@@ -274,17 +273,15 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 			rdbtnFactura.setBounds(742, 262, 99, 23);
 			contentPane.add(rdbtnFactura);
 		}
-		
+		{
+			btnAñadir = new JButton("Añadir");
+			btnAñadir.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				}
+			});
 			btnAñadir.setFont(new Font("Javanese Text", Font.PLAIN, 16));
 			btnAñadir.setBounds(330, 188, 183, 39);
 			contentPane.add(btnAñadir);
-			{
-				btnAñadirVenta = new JButton("Añadir");
-				btnAñadirVenta.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-				btnAñadirVenta.addActionListener(this);
-				btnAñadirVenta.setBounds(10, 318, 85, 32);
-				contentPane.add(btnAñadirVenta);
-			}
 		}
 		{
 			btnComprado = new JButton("Comprar");
@@ -388,7 +385,7 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 		{
 			cboTipoVenta = new JComboBox();
 			cboTipoVenta.addActionListener(this);
-			cboTipoVenta.setModel(new DefaultComboBoxModel(new String[] {"Delivery", "Recojo en tienda"}));
+			cboTipoVenta.setModel(new DefaultComboBoxModel(new String[] {"Presencial", "virtual"}));
 			cboTipoVenta.setFont(new Font("Javanese Text", Font.PLAIN, 16));
 			cboTipoVenta.setBounds(149, 109, 158, 29);
 			contentPane.add(cboTipoVenta);
@@ -492,7 +489,14 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 			break;
 		}
 	}
-	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == cboTipoVenta) {
+			do_cboProceso_1_actionPerformed(e);
+		}
+		if (e.getSource() == cboProceso) {
+			do_comboBox_1_actionPerformed(e);
+		}
+	}
 	protected void do_comboBox_1_actionPerformed(ActionEvent e) {
 		int posi = cboProceso.getSelectedIndex();
 		switch (posi) {
@@ -555,17 +559,8 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 		default:
 			txtDireccion.setEditable(true);
 			//DarkLenin
-		    txtS.append("HOLA");
+		    txtS.append("Hola,Bienvenido al menu de Compras: ");
 			break;
 		}
-	}
-	
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnAñadirVenta) {
-			do_btnAñadirVenta_actionPerformed(e);
-		}
-	}
-	protected void do_btnAñadirVenta_actionPerformed(ActionEvent e) {
-		
 	}
 }
