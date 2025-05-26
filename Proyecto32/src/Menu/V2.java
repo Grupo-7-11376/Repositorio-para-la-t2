@@ -72,6 +72,7 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 	private JLabel lblCodigoDelPeluche_2;
 	private JComboBox cboTipoVenta;
 	private JTextArea txtS;
+	private JButton btnAñadirVenta;
 
 	/**
 	 * Launch the application.
@@ -96,6 +97,7 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 886, 764);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(248, 224, 190));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -241,7 +243,7 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 		{
 			rdbtnEfectivo = new JRadioButton("Efectivo");
 			rdbtnEfectivo.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-			rdbtnEfectivo.setBackground(new Color(250, 240, 230));
+			rdbtnEfectivo.setBackground(new Color(252, 233, 207));
 			rdbtnEfectivo.setBounds(194, 262, 109, 23);
 			contentPane.add(rdbtnEfectivo);
 		}
@@ -272,11 +274,17 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 			rdbtnFactura.setBounds(742, 262, 99, 23);
 			contentPane.add(rdbtnFactura);
 		}
-		{
-			btnAñadir = new JButton("Añadir");
+		
 			btnAñadir.setFont(new Font("Javanese Text", Font.PLAIN, 16));
 			btnAñadir.setBounds(330, 188, 183, 39);
 			contentPane.add(btnAñadir);
+			{
+				btnAñadirVenta = new JButton("Añadir");
+				btnAñadirVenta.setFont(new Font("Javanese Text", Font.PLAIN, 16));
+				btnAñadirVenta.addActionListener(this);
+				btnAñadirVenta.setBounds(10, 318, 85, 32);
+				contentPane.add(btnAñadirVenta);
+			}
 		}
 		{
 			btnComprado = new JButton("Comprar");
@@ -484,14 +492,7 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 			break;
 		}
 	}
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == cboTipoVenta) {
-			do_cboProceso_1_actionPerformed(e);
-		}
-		if (e.getSource() == cboProceso) {
-			do_comboBox_1_actionPerformed(e);
-		}
-	}
+	
 	protected void do_comboBox_1_actionPerformed(ActionEvent e) {
 		int posi = cboProceso.getSelectedIndex();
 		switch (posi) {
@@ -557,5 +558,14 @@ public class V2 extends JFrame implements ItemListener, ActionListener {
 		    txtS.append("HOLA");
 			break;
 		}
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnAñadirVenta) {
+			do_btnAñadirVenta_actionPerformed(e);
+		}
+	}
+	protected void do_btnAñadirVenta_actionPerformed(ActionEvent e) {
+		
 	}
 }
