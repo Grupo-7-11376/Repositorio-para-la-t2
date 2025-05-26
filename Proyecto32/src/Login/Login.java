@@ -88,7 +88,7 @@ public class Login extends JFrame implements ActionListener {
 			contentPane.add(TxtContraseña);
 		}
 		{
-			lblNewLabel_1 = new JLabel("Aca va el icono");
+			lblNewLabel_1 = new JLabel("");
 			lblNewLabel_1.setBounds(144, 11, 124, 73);
 			contentPane.add(lblNewLabel_1);
 		}
