@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class Login extends JFrame implements ActionListener {
 
@@ -50,8 +52,9 @@ public class Login extends JFrame implements ActionListener {
 	 */
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 557);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(253, 234, 198));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -59,19 +62,19 @@ public class Login extends JFrame implements ActionListener {
 		{
 			lblNewLabel = new JLabel("Usuario");
 			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			lblNewLabel.setBounds(73, 95, 79, 29);
+			lblNewLabel.setBounds(45, 222, 79, 29);
 			contentPane.add(lblNewLabel);
 		}
 		{
 			lblContrasea = new JLabel("Contraseña");
 			lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			lblContrasea.setBounds(73, 157, 79, 29);
+			lblContrasea.setBounds(45, 306, 107, 29);
 			contentPane.add(lblContrasea);
 		}
 		{
 			TxtUsuario = new JTextField();
 			TxtUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
-			TxtUsuario.setBounds(182, 95, 172, 29);
+			TxtUsuario.setBounds(182, 222, 172, 29);
 			contentPane.add(TxtUsuario);
 			TxtUsuario.setColumns(10);
 		}
@@ -79,17 +82,18 @@ public class Login extends JFrame implements ActionListener {
 			BtnIngresar = new JButton("Ingresar");
 			BtnIngresar.addActionListener(this);
 			BtnIngresar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			BtnIngresar.setBounds(130, 216, 172, 34);
+			BtnIngresar.setBounds(116, 420, 172, 34);
 			contentPane.add(BtnIngresar);
 		}
 		{
 			TxtContraseña = new JPasswordField();
-			TxtContraseña.setBounds(182, 157, 172, 29);
+			TxtContraseña.setBounds(182, 308, 172, 29);
 			contentPane.add(TxtContraseña);
 		}
 		{
 			lblNewLabel_1 = new JLabel("");
-			lblNewLabel_1.setBounds(144, 11, 124, 73);
+			lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\jefry\\git\\t2\\Proyecto32\\src\\LoginImagen\\Sin título.jpg"));
+			lblNewLabel_1.setBounds(99, 10, 225, 173);
 			contentPane.add(lblNewLabel_1);
 		}
 	}
