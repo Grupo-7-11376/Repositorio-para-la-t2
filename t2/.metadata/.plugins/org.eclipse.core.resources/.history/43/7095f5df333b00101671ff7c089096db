@@ -1,0 +1,115 @@
+package Login;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import Gui.Tienda;
+import Menu.V2;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
+
+public class Login extends JFrame implements ActionListener {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JLabel lblNewLabel;
+	private JLabel lblContrasea;
+	private JTextField TxtUsuario;
+	private JButton BtnIngresar;
+	private JPasswordField TxtContraseña;
+	private JLabel lblNewLabel_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Login frame = new Login();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Login() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		{
+			lblNewLabel = new JLabel("Usuario");
+			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblNewLabel.setBounds(73, 95, 79, 29);
+			contentPane.add(lblNewLabel);
+		}
+		{
+			lblContrasea = new JLabel("Contraseña");
+			lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			lblContrasea.setBounds(73, 157, 79, 29);
+			contentPane.add(lblContrasea);
+		}
+		{
+			TxtUsuario = new JTextField();
+			TxtUsuario.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			TxtUsuario.setBounds(182, 95, 172, 29);
+			contentPane.add(TxtUsuario);
+			TxtUsuario.setColumns(10);
+		}
+		{
+			BtnIngresar = new JButton("Ingresar");
+			BtnIngresar.addActionListener(this);
+			BtnIngresar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			BtnIngresar.setBounds(130, 216, 172, 34);
+			contentPane.add(BtnIngresar);
+		}
+		{
+			TxtContraseña = new JPasswordField();
+			TxtContraseña.setBounds(182, 157, 172, 29);
+			contentPane.add(TxtContraseña);
+		}
+		{
+			lblNewLabel_1 = new JLabel("Aca va el icono");
+			lblNewLabel_1.setBounds(144, 11, 124, 73);
+			contentPane.add(lblNewLabel_1);
+		}
+	}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == BtnIngresar) {
+			do_btnIngresar_actionPerformed(e);
+		}
+	}
+	protected void do_btnIngresar_actionPerformed(ActionEvent e) {
+	
+		String user= TxtUsuario.getText();
+		String pass=new String(TxtContraseña.getPassword());
+		if(user.equals("admin")&& pass.equals("1234")) {
+			JOptionPane.showMessageDialog(this,"¡BIENVENIDO!");
+			Tienda mp=new Tienda();
+			mp.setVisible(true);
+			this.dispose();
+		}else {
+			JOptionPane.showMessageDialog(this,"Usuario o contraseña incorrectos");
+		}
+	}
+}

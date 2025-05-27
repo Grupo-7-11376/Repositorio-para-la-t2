@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="EGit.KnownHosts">
+		<item value="bitbucket.org"/>
+		<item value="git.eclipse.org"/>
+		<item value="github.com"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/Grupo-7-11376/Repositorio-para-la-t2.git"/>
+		<item value="https://github.com/Grupo-7-11376/Tc3.git"/>
+	</list>
+</section>
