@@ -1,10 +1,13 @@
 package Modelo;
 
+import java.util.Map;
+
 public class Producto {
 	private String idProducto;
     private String nombre;
     private int stock;
     private double precio;
+    
 	
 	public Producto(String idProducto, String nombre, int stock, double precio) {
 		this.idProducto = idProducto;
@@ -35,4 +38,7 @@ public class Producto {
     public String toString() {
         return idProducto + " - " + nombre + " - $" + precio + " - Stock: " + stock;
     }
+    
+	 
+    
 }

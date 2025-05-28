@@ -28,8 +28,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.awt.event.ItemEvent;
 
 public class Tienda extends JFrame implements ActionListener, ItemListener {
@@ -41,7 +43,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 	private JTextField txtPrecio;
 	private JTextField txtIdDetalleVenta;
 	private JTextField txtFecha;
-	private JTextField txtApellido2;
+	private JTextField txtApellido;
 	private JTextField txtDireccion;
 	private JTextField txtTelefono;
 	private JTextField txtId_Venta;
@@ -58,7 +60,9 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
     private JButton btnBuscarCliente;
     private JButton btnBuscarProducto;
     private JButton btnRegistrarVenta;
-   //sadasdasdasdsad
+    private JLabel lblQueActividadDesea;
+    private JComboBox comboBox;
+   
 	/**
 	 * Launch the application.
 	 */
@@ -79,8 +83,9 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 	 * Create the frame.
 	 */
 	public Tienda() {
+		setTitle("Tienda de Peluches");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 849, 658);
+		setBounds(100, 100, 849, 734);
 		JPanel = new JPanel();
 		JPanel.setBackground(new Color(243, 225, 188));
 		JPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -91,149 +96,149 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		
 		JLabel lblProducto = new JLabel("Producto");
 		lblProducto.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblProducto.setBounds(17, 45, 151, 26);
+		lblProducto.setBounds(10, 85, 151, 26);
 		JPanel.add(lblProducto);
 		
 		JLabel lblIdproducto = new JLabel("IdProducto");
 		lblIdproducto.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblIdproducto.setBounds(17, 71, 151, 26);
+		lblIdproducto.setBounds(10, 110, 151, 26);
 		JPanel.add(lblIdproducto);
 		
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblNombre.setBounds(217, 71, 151, 26);
+		lblNombre.setBounds(217, 110, 151, 26);
 		JPanel.add(lblNombre);
 		
 		txtNombre = new JTextField();
 		txtNombre.setEditable(false);
 		txtNombre.setFont(new Font("Javanese Text", Font.PLAIN, 16));
 		txtNombre.setColumns(10);
-		txtNombre.setBounds(217, 108, 158, 31);
+		txtNombre.setBounds(217, 145, 158, 31);
 		JPanel.add(txtNombre);
 		
 		JLabel lblCantidad_1 = new JLabel("Cantidad");
 		lblCantidad_1.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblCantidad_1.setBounds(397, 71, 151, 26);
+		lblCantidad_1.setBounds(397, 110, 151, 26);
 		JPanel.add(lblCantidad_1);
 		
 		txtCantidad = new JTextField();
 		txtCantidad.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtCantidad.setColumns(10);
-		txtCantidad.setBounds(397, 109, 158, 31);
+		txtCantidad.setBounds(397, 146, 158, 31);
 		JPanel.add(txtCantidad);
 		
 		JLabel lblPrecio = new JLabel("Precio");
 		lblPrecio.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblPrecio.setBounds(573, 71, 120, 26);
+		lblPrecio.setBounds(573, 110, 120, 26);
 		JPanel.add(lblPrecio);
 		
 		txtPrecio = new JTextField();
 		txtPrecio.setEditable(false);
 		txtPrecio.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtPrecio.setColumns(10);
-		txtPrecio.setBounds(575, 109, 118, 31);
+		txtPrecio.setBounds(575, 146, 118, 31);
 		JPanel.add(txtPrecio);
 		
 		JLabel lblIdcliente = new JLabel("IdDetalleVenta");
 		lblIdcliente.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblIdcliente.setBounds(17, 313, 151, 26);
+		lblIdcliente.setBounds(34, 394, 151, 26);
 		JPanel.add(lblIdcliente);
 		
 		txtIdDetalleVenta = new JTextField();
 		txtIdDetalleVenta.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtIdDetalleVenta.setColumns(10);
-		txtIdDetalleVenta.setBounds(17, 349, 158, 31);
+		txtIdDetalleVenta.setBounds(27, 443, 158, 31);
 		JPanel.add(txtIdDetalleVenta);
 		
 		JLabel lblNombre_3 = new JLabel("Nombre");
 		lblNombre_3.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblNombre_3.setBounds(178, 181, 151, 26);
+		lblNombre_3.setBounds(202, 266, 151, 26);
 		JPanel.add(lblNombre_3);
 		
 		txtFecha = new JTextField();
 		txtFecha.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtFecha.setColumns(10);
-		txtFecha.setBounds(204, 349, 158, 31);
+		txtFecha.setBounds(195, 443, 158, 31);
 		JPanel.add(txtFecha);
 		
 		JLabel lblNombre_4 = new JLabel("Apellido");
 		lblNombre_4.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblNombre_4.setBounds(353, 181, 151, 26);
+		lblNombre_4.setBounds(365, 253, 151, 26);
 		JPanel.add(lblNombre_4);
 		
-		txtApellido2 = new JTextField();
-		txtApellido2.setFont(new Font("Javanese Text", Font.PLAIN, 10));
-		txtApellido2.setColumns(10);
-		txtApellido2.setBounds(346, 218, 158, 31);
-		JPanel.add(txtApellido2);
+		txtApellido = new JTextField();
+		txtApellido.setFont(new Font("Javanese Text", Font.PLAIN, 10));
+		txtApellido.setColumns(10);
+		txtApellido.setBounds(358, 302, 158, 31);
+		JPanel.add(txtApellido);
 		
 		txtDireccion = new JTextField();
 		txtDireccion.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtDireccion.setColumns(10);
-		txtDireccion.setBounds(514, 218, 158, 31);
+		txtDireccion.setBounds(521, 302, 158, 31);
 		JPanel.add(txtDireccion);
 		
 		JLabel lblNombre_1 = new JLabel("Direccion");
 		lblNombre_1.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblNombre_1.setBounds(514, 181, 151, 26);
+		lblNombre_1.setBounds(528, 253, 151, 26);
 		JPanel.add(lblNombre_1);
 		
 		txtTelefono = new JTextField();
 		txtTelefono.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtTelefono.setColumns(10);
-		txtTelefono.setBounds(682, 218, 141, 31);
+		txtTelefono.setBounds(692, 302, 141, 31);
 		JPanel.add(txtTelefono);
 		
 		JLabel lblNombre_2 = new JLabel("Telefono");
 		lblNombre_2.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblNombre_2.setBounds(682, 181, 151, 26);
+		lblNombre_2.setBounds(695, 253, 151, 26);
 		JPanel.add(lblNombre_2);
 		
 		btnAñadir = new JButton("Añadir Stock");
 		btnAñadir.addActionListener(this);
 		btnAñadir.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		btnAñadir.setBounds(397, 288, 151, 39);
+		btnAñadir.setBounds(397, 367, 151, 39);
 		JPanel.add(btnAñadir);
 		
 		txtS = new JTextArea();
-		txtS.setBounds(22, 438, 754, 160);
+		txtS.setBounds(27, 502, 754, 160);
 		JPanel.add(txtS);
 		
 		JLabel lblCliente = new JLabel("Cliente");
 		lblCliente.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblCliente.setBounds(10, 154, 151, 26);
+		lblCliente.setBounds(17, 202, 151, 26);
 		JPanel.add(lblCliente);
 		
 		txtId_Venta = new JTextField();
 		txtId_Venta.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtId_Venta.setColumns(10);
-		txtId_Venta.setBounds(10, 218, 158, 31);
+		txtId_Venta.setBounds(17, 302, 158, 31);
 		JPanel.add(txtId_Venta);
 		
-		JLabel lblIdventa = new JLabel("Idventa");
+		JLabel lblIdventa = new JLabel("Idcliente");
 		lblIdventa.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblIdventa.setBounds(10, 181, 151, 26);
+		lblIdventa.setBounds(17, 266, 151, 26);
 		JPanel.add(lblIdventa);
 		
 		JLabel lblCliente_1_1 = new JLabel("Fecha");
 		lblCliente_1_1.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblCliente_1_1.setBounds(204, 313, 151, 26);
+		lblCliente_1_1.setBounds(202, 394, 151, 26);
 		JPanel.add(lblCliente_1_1);
 		
 		txtNombreCliente = new JTextField();
 		txtNombreCliente.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtNombreCliente.setColumns(10);
-		txtNombreCliente.setBounds(178, 218, 158, 31);
+		txtNombreCliente.setBounds(188, 302, 158, 31);
 		JPanel.add(txtNombreCliente);
 		
-		JLabel lblCliente_2 = new JLabel("Cliente");
+		JLabel lblCliente_2 = new JLabel("Detalle Venta:");
 		lblCliente_2.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblCliente_2.setBounds(17, 277, 151, 26);
+		lblCliente_2.setBounds(34, 358, 151, 26);
 		JPanel.add(lblCliente_2);
 		
 		JLabel lblTienda = new JLabel("TiendaPeluches");
 		lblTienda.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		lblTienda.setBounds(323, 10, 151, 26);
+		lblTienda.setBounds(278, 10, 151, 26);
 		JPanel.add(lblTienda);
 		
 		lblImagen = new JLabel("New label");
@@ -244,34 +249,46 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		btnStock = new JButton("Mostrar Stock");
 		btnStock.addActionListener(this);
 		btnStock.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		btnStock.setBounds(561, 288, 151, 39);
+		btnStock.setBounds(558, 406, 151, 39);
 		JPanel.add(btnStock);
 		
 		btnBuscarCliente = new JButton("Buscar Cliente");
 		btnBuscarCliente.addActionListener(this);
 		btnBuscarCliente.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		btnBuscarCliente.setBounds(397, 338, 151, 39);
+		btnBuscarCliente.setBounds(397, 406, 151, 39);
 		JPanel.add(btnBuscarCliente);
 		
 		btnBuscarProducto = new JButton("Buscar Producto");
 		btnBuscarProducto.addActionListener(this);
 		btnBuscarProducto.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		btnBuscarProducto.setBounds(561, 338, 151, 37);
+		btnBuscarProducto.setBounds(558, 455, 151, 37);
 		JPanel.add(btnBuscarProducto);
 		{
 			cboPeluche = new JComboBox();
 			cboPeluche.addItemListener(this);
 			cboPeluche.setModel(new DefaultComboBoxModel(new String[] {"100", "200", "300", "400", "500", "600", "700", "800", "900"}));
 			cboPeluche.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-			cboPeluche.setBounds(10, 108, 158, 32);
+			cboPeluche.setBounds(10, 144, 158, 32);
 			JPanel.add(cboPeluche);
 		}
 		{
 			btnRegistrarVenta = new JButton("Añadir Venta");
 			btnRegistrarVenta.addActionListener(this);
 			btnRegistrarVenta.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-			btnRegistrarVenta.setBounds(397, 388, 151, 39);
+			btnRegistrarVenta.setBounds(397, 453, 151, 39);
 			JPanel.add(btnRegistrarVenta);
+		}
+		{
+			lblQueActividadDesea = new JLabel("Que Actividad desea realizar?");
+			lblQueActividadDesea.setFont(new Font("Javanese Text", Font.PLAIN, 16));
+			lblQueActividadDesea.setBounds(34, 46, 241, 26);
+			JPanel.add(lblQueActividadDesea);
+		}
+		{
+			comboBox = new JComboBox();
+			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Venta", "Compra", "Ingreso de stock"}));
+			comboBox.setBounds(278, 46, 120, 21);
+			JPanel.add(comboBox);
 		}
 		
 		
@@ -294,23 +311,31 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		}
 	}
 	protected void do_btnAñadir_actionPerformed(ActionEvent e) {
-		String id = (String) cboPeluche.getSelectedItem();
-		int cantidad = Integer.parseInt(txtCantidad.getText());
-		if(cantidad<=0) 
-		{
-			JOptionPane.showMessageDialog(this, "Ingresar una cantidad correcta");
-		}
-		else 
-		{
-			String nombre = obtenerNombrePorId(id);
-			double precio = obtenerPrecioPorId(id);
-			
-			Producto nuevo = new Producto(id, nombre, cantidad, precio);
-			almacen.agregarProducto(nuevo);
+		
+		try {
+			String id = (String) cboPeluche.getSelectedItem();
+			int cantidad = Integer.parseInt(txtCantidad.getText());
+			if(cantidad<=0) 
+			{
+				JOptionPane.showMessageDialog(this, "Ingresar una cantidad correcta");
+			}
+			else 
+			{
+				String nombre = obtenerNombrePorId(id);
+				double precio = obtenerPrecioPorId(id);
+				
+				Producto nuevo = new Producto(id, nombre, cantidad, precio);
+				almacen.agregarProducto(nuevo);
 
-			JOptionPane.showMessageDialog(null, "Stock añadido para " + nombre);
+				JOptionPane.showMessageDialog(null, "Stock añadido para " + nombre);
+			}
+		}catch(Exception e2)
+		{
+			JOptionPane.showMessageDialog(this, " No ha ingresado un valor valido");
 		}
+		
     }
+	
 	int leerCantidad() 
 	{
 		return Integer.parseInt(txtCantidad.getText()); 
@@ -403,20 +428,33 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		}
 	}
 	protected void do_btnStock_actionPerformed(ActionEvent e) {
-		HashMap<String, Producto> stockAgrupado = new HashMap<>();
-        for (Producto p : almacen.getTodosLosProductos()) {
-            Producto existente = stockAgrupado.get(p.getIdProducto());
-            if (existente == null) {
-                stockAgrupado.put(p.getIdProducto(), new Producto(p.getIdProducto(), p.getNombre(), p.getStock(), p.getPrecio()));
-            } else {
-                existente.setStock(existente.getStock() + p.getStock());
-            }
-        }
+	   
+	    HashMap<String, Producto> stockAgrupado = new HashMap<>();
+	    for (Producto p : almacen.getTodosLosProductos()) {
+	        Producto existente = stockAgrupado.get(p.getIdProducto());
+	        if (existente == null) {
+	            stockAgrupado.put(p.getIdProducto(), new Producto(p.getIdProducto(), p.getNombre(), p.getStock(), p.getPrecio()));
+	        } else {
+	            existente.setStock(existente.getStock() + p.getStock());
+	        }
+	    }
 
-        txtS.setText("Stock actual:\n");
-        for (Producto p : stockAgrupado.values()) {
-            txtS.append(p.toString() + "\n");
-        }
+	    
+	    List<Producto> productosOrdenados = new ArrayList<>(stockAgrupado.values());
+	    productosOrdenados.sort(Comparator.comparing(Producto::getIdProducto)); 
+
+	    
+	    txtS.setText("=== STOCK ACTUAL (Ordenado por ID) ===\n");
+	    txtS.append(String.format("%-10s %-20s %-10s %-10s\n", 
+	        "ID","NOMBRE","STOCK","PRECIO")); 
+
+	    for (Producto p : productosOrdenados) {
+	        txtS.append(String.format("%-10s %-30s %-10d $%-10.2f\n", 
+	            p.getIdProducto() 
+	           , p.getNombre()
+	            ,p.getStock() 
+	            ,p.getPrecio())); 
+	    }
 	}
 	protected void do_btnBuscarCliente_actionPerformed(ActionEvent e) {
 		String idProducto = (String) cboPeluche.getSelectedItem();
@@ -434,6 +472,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
             }
         }
         return null;
+        
     }
 	
 	protected void do_btnBuscarProducto_actionPerformed(ActionEvent e) {
@@ -447,33 +486,39 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
         txtS.setText("Producto no encontrado");
 	}
 	protected void do_btnRegistrarVenta_actionPerformed(ActionEvent e) {
-		String idVenta = txtId_Venta.getText();
-        String nombre = txtNombreCliente.getText();
-        String apellido = txtApellido2.getText();
-        String direccion = txtDireccion.getText();
-        String telefono = txtTelefono.getText();
-        String fecha = txtFecha.getText();
-        Cliente cliente = new Cliente(idVenta, nombre, apellido, direccion, telefono);
-        clientes.add(cliente);
-        Venta venta = new Venta(idVenta, cliente, new Date());
-        ventas.add(venta);
-        txtS.append("Venta registrada: " + venta + "\n");
-        detalles.clear();
-        for (DetalleVenta detalle : detalles) 
-        {
-            Producto vendido = detalle.getProducto();
-            int cantidadVendida = detalle.getCantidad();
+		if(txtId_Venta.getText().isEmpty()||txtCantidad.getText().isEmpty() || txtNombreCliente.getText().isEmpty()|| txtApellido.getText().isEmpty()|| txtDireccion.getText().isEmpty()|| txtTelefono.getText().isEmpty())	
+		{
+		 JOptionPane.showMessageDialog(this, "No a llenado los espacios correctamente ");
+	  }
+		else
+		{
+			String idVenta = txtId_Venta.getText();
+	        String nombre = txtNombreCliente.getText();
+	        String apellido = txtApellido.getText();
+	        String direccion = txtDireccion.getText();
+	        String telefono = txtTelefono.getText();
+	        String fecha = txtFecha.getText();
+	        Cliente cliente = new Cliente(idVenta, nombre, apellido, direccion, telefono);
+	        clientes.add(cliente);
+	        Venta venta = new Venta(idVenta, cliente, new Date());
+	        ventas.add(venta);
+	        txtS.append("Venta registrada: " + venta + "\n");
+	        detalles.clear();
+	        for (DetalleVenta detalle : detalles) 
+	        {
+	            Producto vendido = detalle.getProducto();
+	            int cantidadVendida = detalle.getCantidad();
 
-            	for (Producto p : almacen.getTodosLosProductos()) 
-            	{
-            		if (p.getIdProducto().equals(vendido.getIdProducto())) 
-            		{
-            			int nuevoStock = p.getStock() - cantidadVendida;
-            			p.setStock(nuevoStock);
-            			break;
-                }
-            }
-        }
-	}
-	
-}
+	            	for (Producto p : almacen.getTodosLosProductos()) 
+	            	{
+	            		if (p.getIdProducto().equals(vendido.getIdProducto())) 
+	            		{
+	            			int nuevoStock = p.getStock() - cantidadVendida;
+	            			p.setStock(nuevoStock);
+	            			break;
+	                }
+	            }
+	        }
+		}
+  }
+ }
