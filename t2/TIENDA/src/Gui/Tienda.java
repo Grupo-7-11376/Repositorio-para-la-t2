@@ -58,7 +58,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
     private JButton btnBuscarCliente;
     private JButton btnBuscarProducto;
     private JButton btnRegistrarVenta;
-   
+   //sadasdasdasdsad
 	/**
 	 * Launch the application.
 	 */
