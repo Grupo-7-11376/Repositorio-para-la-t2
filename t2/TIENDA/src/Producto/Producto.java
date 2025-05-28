@@ -36,4 +36,14 @@ public class Producto {
 		this.cantidad = cantidad;
 		this.precio = precio;
 	}
+	
+	public int getStock() {
+        return stock;
+    }
+	public void reducirStock(int cantidad) {
+        if(cantidad <= stock) {
+            stock -= cantidad;
+        } else {
+            System.out.println("No hay suficiente stock para la venta.");
+        }
 }

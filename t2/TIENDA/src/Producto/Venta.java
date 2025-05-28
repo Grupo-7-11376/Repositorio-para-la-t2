@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Venta {
-	private int idVenta;
+    private int idVenta;
     private Cliente cliente;
     private Date fecha;
     private ArrayList<DetalleVenta> detalles;
@@ -17,7 +17,7 @@ public class Venta {
         this.detalles = new ArrayList<>();
     }
 
- // Métodos para agregar productos
+    // Método para agregar productos verificando stock
     public boolean agregarDetalle(Producto producto, int cantidad) {
         if (producto.getCantidad() < cantidad) {
             System.out.println("Producto sin stock suficiente: " + producto.getNombre());
@@ -29,11 +29,29 @@ public class Venta {
         }
     }
 
+    // Método alternativo (usamos este)
+    public void registrarDetalleVenta(Producto producto, int cantidad) {
+    	if (producto.getStock() >= cantidad) {
+            producto.setStock(producto.getStock() - cantidad); // reducir stock
+            detalles.add(new DetalleVenta(producto, cantidad));
+        } else {
+            System.out.println("Stock insuficiente para el producto: " + producto.getNombre());
+        }
+    }
+
     public double calcularTotal() {
         double total = 0;
         for (DetalleVenta detalle : detalles) {
             total += detalle.calcularImporte();
         }
         return total;
+    }
+
+    public String toString() {
+        return "Venta ID: " + idVenta + ", Cliente: " + cliente.getNombres() + ", Fecha: " + fecha;
+    }
+
+    public ArrayList<DetalleVenta> getDetalles() {
+        return detalles;
     }
 }

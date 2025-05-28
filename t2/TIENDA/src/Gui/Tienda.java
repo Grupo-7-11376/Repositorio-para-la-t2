@@ -57,11 +57,11 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
     private ArrayList<Venta> ventas = new ArrayList<>();
     private ArrayList<DetalleVenta> detalles = new ArrayList<>();
     private JButton btnStock;
-    private JButton btnBuscarCliente;
-    private JButton btnBuscarProducto;
     private JButton btnRegistrarVenta;
     private JLabel lblQueActividadDesea;
-    private JComboBox comboBox;
+    private JComboBox cbActividad;
+    private JButton btnMostrarVenta;
+    private JButton btnBuscarProducto;
    
 	/**
 	 * Launch the application.
@@ -122,6 +122,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		JPanel.add(lblCantidad_1);
 		
 		txtCantidad = new JTextField();
+		txtCantidad.setEditable(false);
 		txtCantidad.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtCantidad.setColumns(10);
 		txtCantidad.setBounds(397, 146, 158, 31);
@@ -145,6 +146,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		JPanel.add(lblIdcliente);
 		
 		txtIdDetalleVenta = new JTextField();
+		txtIdDetalleVenta.setEditable(false);
 		txtIdDetalleVenta.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtIdDetalleVenta.setColumns(10);
 		txtIdDetalleVenta.setBounds(27, 443, 158, 31);
@@ -156,6 +158,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		JPanel.add(lblNombre_3);
 		
 		txtFecha = new JTextField();
+		txtFecha.setEditable(false);
 		txtFecha.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtFecha.setColumns(10);
 		txtFecha.setBounds(195, 443, 158, 31);
@@ -167,12 +170,14 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		JPanel.add(lblNombre_4);
 		
 		txtApellido = new JTextField();
+		txtApellido.setEditable(false);
 		txtApellido.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtApellido.setColumns(10);
 		txtApellido.setBounds(358, 302, 158, 31);
 		JPanel.add(txtApellido);
 		
 		txtDireccion = new JTextField();
+		txtDireccion.setEditable(false);
 		txtDireccion.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtDireccion.setColumns(10);
 		txtDireccion.setBounds(521, 302, 158, 31);
@@ -184,6 +189,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		JPanel.add(lblNombre_1);
 		
 		txtTelefono = new JTextField();
+		txtTelefono.setEditable(false);
 		txtTelefono.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtTelefono.setColumns(10);
 		txtTelefono.setBounds(692, 302, 141, 31);
@@ -197,7 +203,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		btnAñadir = new JButton("Añadir Stock");
 		btnAñadir.addActionListener(this);
 		btnAñadir.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		btnAñadir.setBounds(397, 367, 151, 39);
+		btnAñadir.setBounds(397, 352, 151, 39);
 		JPanel.add(btnAñadir);
 		
 		txtS = new JTextArea();
@@ -210,6 +216,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		JPanel.add(lblCliente);
 		
 		txtId_Venta = new JTextField();
+		txtId_Venta.setEditable(false);
 		txtId_Venta.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtId_Venta.setColumns(10);
 		txtId_Venta.setBounds(17, 302, 158, 31);
@@ -226,6 +233,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		JPanel.add(lblCliente_1_1);
 		
 		txtNombreCliente = new JTextField();
+		txtNombreCliente.setEditable(false);
 		txtNombreCliente.setFont(new Font("Javanese Text", Font.PLAIN, 10));
 		txtNombreCliente.setColumns(10);
 		txtNombreCliente.setBounds(188, 302, 158, 31);
@@ -249,20 +257,8 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		btnStock = new JButton("Mostrar Stock");
 		btnStock.addActionListener(this);
 		btnStock.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		btnStock.setBounds(558, 406, 151, 39);
+		btnStock.setBounds(397, 404, 151, 39);
 		JPanel.add(btnStock);
-		
-		btnBuscarCliente = new JButton("Buscar Cliente");
-		btnBuscarCliente.addActionListener(this);
-		btnBuscarCliente.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		btnBuscarCliente.setBounds(397, 406, 151, 39);
-		JPanel.add(btnBuscarCliente);
-		
-		btnBuscarProducto = new JButton("Buscar Producto");
-		btnBuscarProducto.addActionListener(this);
-		btnBuscarProducto.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-		btnBuscarProducto.setBounds(558, 455, 151, 37);
-		JPanel.add(btnBuscarProducto);
 		{
 			cboPeluche = new JComboBox();
 			cboPeluche.addItemListener(this);
@@ -275,7 +271,7 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 			btnRegistrarVenta = new JButton("Añadir Venta");
 			btnRegistrarVenta.addActionListener(this);
 			btnRegistrarVenta.setFont(new Font("Javanese Text", Font.PLAIN, 16));
-			btnRegistrarVenta.setBounds(397, 453, 151, 39);
+			btnRegistrarVenta.setBounds(557, 352, 151, 39);
 			JPanel.add(btnRegistrarVenta);
 		}
 		{
@@ -285,24 +281,42 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 			JPanel.add(lblQueActividadDesea);
 		}
 		{
-			comboBox = new JComboBox();
-			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Venta", "Compra", "Ingreso de stock"}));
-			comboBox.setBounds(278, 46, 120, 21);
-			JPanel.add(comboBox);
+			cbActividad = new JComboBox();
+			cbActividad.addActionListener(this);
+			cbActividad.setModel(new DefaultComboBoxModel(new String[] {"Venta", "Stock"}));
+			cbActividad.setBounds(278, 46, 120, 21);
+			JPanel.add(cbActividad);
 		}
+		
+		btnMostrarVenta = new JButton("MostrarVenta");
+		btnMostrarVenta.addActionListener(this);
+		btnMostrarVenta.setFont(new Font("Javanese Text", Font.PLAIN, 16));
+		btnMostrarVenta.setBounds(558, 404, 151, 39);
+		JPanel.add(btnMostrarVenta);
+		
+		btnBuscarProducto = new JButton("BuscarProducto");
+		btnBuscarProducto.addActionListener(this);
+		btnBuscarProducto.setFont(new Font("Javanese Text", Font.PLAIN, 16));
+		btnBuscarProducto.setBounds(397, 453, 151, 39);
+		JPanel.add(btnBuscarProducto);
 		
 		
 	}
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnRegistrarVenta) {
-			do_btnRegistrarVenta_actionPerformed(e);
+		if (e.getSource() == btnMostrarVenta) {
+			do_btnMostrarVenta_actionPerformed(e);
 		}
 		if (e.getSource() == btnBuscarProducto) {
 			do_btnBuscarProducto_actionPerformed(e);
 		}
-		if (e.getSource() == btnBuscarCliente) {
-			do_btnBuscarCliente_actionPerformed(e);
+		if (e.getSource() == cbActividad) {
+			do_comboBox_actionPerformed(e);
 		}
+		if (e.getSource() == btnRegistrarVenta) {
+			do_btnRegistrarVenta_actionPerformed(e);
+		}
+		
+		
 		if (e.getSource() == btnStock) {
 			do_btnStock_actionPerformed(e);
 		}
@@ -311,30 +325,27 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		}
 	}
 	protected void do_btnAñadir_actionPerformed(ActionEvent e) {
-		
-		try {
-			String id = (String) cboPeluche.getSelectedItem();
-			int cantidad = Integer.parseInt(txtCantidad.getText());
-			if(cantidad<=0) 
-			{
-				JOptionPane.showMessageDialog(this, "Ingresar una cantidad correcta");
-			}
-			else 
-			{
-				String nombre = obtenerNombrePorId(id);
-				double precio = obtenerPrecioPorId(id);
-				
-				Producto nuevo = new Producto(id, nombre, cantidad, precio);
-				almacen.agregarProducto(nuevo);
+	    try {
+	        String id = (String) cboPeluche.getSelectedItem();
+	        int cantidad = Integer.parseInt(txtCantidad.getText());
+	        if (cantidad <= 0) {
+	            JOptionPane.showMessageDialog(this, "Ingresar una cantidad correcta");
+	        } else {
+	            String nombre = obtenerNombrePorId(id);
+	            double precio = obtenerPrecioPorId(id);
 
-				JOptionPane.showMessageDialog(null, "Stock añadido para " + nombre);
-			}
-		}catch(Exception e2)
-		{
-			JOptionPane.showMessageDialog(this, " No ha ingresado un valor valido");
-		}
-		
-    }
+	            Producto nuevo = new Producto(id, nombre, cantidad, precio);
+	            almacen.agregarProducto(nuevo);
+
+	            // Limpiar el área de texto txtS
+	            txtS.setText("");
+
+	            JOptionPane.showMessageDialog(null, "Stock añadido para " + nombre);
+	        }
+	    } catch (Exception e2) {
+	        JOptionPane.showMessageDialog(this, " No ha ingresado un valor valido");
+	    }
+	}
 	
 	int leerCantidad() 
 	{
@@ -428,8 +439,8 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 		}
 	}
 	protected void do_btnStock_actionPerformed(ActionEvent e) {
-	   
-	    HashMap<String, Producto> stockAgrupado = new HashMap<>();
+		 txtS.setText("");
+		HashMap<String, Producto> stockAgrupado = new HashMap<>();
 	    for (Producto p : almacen.getTodosLosProductos()) {
 	        Producto existente = stockAgrupado.get(p.getIdProducto());
 	        if (existente == null) {
@@ -439,30 +450,24 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
 	        }
 	    }
 
-	    
 	    List<Producto> productosOrdenados = new ArrayList<>(stockAgrupado.values());
 	    productosOrdenados.sort(Comparator.comparing(Producto::getIdProducto)); 
 
-	    
-	    txtS.setText("=== STOCK ACTUAL (Ordenado por ID) ===\n");
-	    txtS.append(String.format("%-10s %-20s %-10s %-10s\n", 
-	        "ID","NOMBRE","STOCK","PRECIO")); 
+	    txtS.setText("========== STOCK ACTUAL ==========\n");
+	    txtS.append(String.format("%-10s %-20s %-10s %-10s\n", "ID","NOMBRE","STOCK","PRECIO")); 
 
 	    for (Producto p : productosOrdenados) {
 	        txtS.append(String.format("%-10s %-30s %-10d $%-10.2f\n", 
-	            p.getIdProducto() 
-	           , p.getNombre()
-	            ,p.getStock() 
-	            ,p.getPrecio())); 
+	            p.getIdProducto(), p.getNombre(), p.getStock(), p.getPrecio())); 
 	    }
 	}
-	protected void do_btnBuscarCliente_actionPerformed(ActionEvent e) {
+	protected void do_btnBuscarProducto_actionPerformed(ActionEvent e) {
 		String idProducto = (String) cboPeluche.getSelectedItem();
         Producto p = buscarProductoPorId(idProducto);
         if (p != null) {
-            txtS.setText("Producto encontrado:\n" + p.toString());
+            txtS.setText("La producto se encuentra :\n" + p.toString());
         } else {
-            txtS.setText("Producto no encontrado.");
+            txtS.setText("La producto no se encuentra.");
         }
 	}
 	private Producto buscarProductoPorId(String id) {
@@ -475,50 +480,139 @@ public class Tienda extends JFrame implements ActionListener, ItemListener {
         
     }
 	
-	protected void do_btnBuscarProducto_actionPerformed(ActionEvent e) {
-		String id = (String) cboPeluche.getSelectedItem();
-        for (Producto p : almacen.getTodosLosProductos()) {
-            if (p.getIdProducto().equalsIgnoreCase(id)) {
-                txtS.setText("Producto encontrado:\n" + p.toString());
-                return;
-            }
-        }
-        txtS.setText("Producto no encontrado");
-	}
 	protected void do_btnRegistrarVenta_actionPerformed(ActionEvent e) {
-		if(txtId_Venta.getText().isEmpty()||txtCantidad.getText().isEmpty() || txtNombreCliente.getText().isEmpty()|| txtApellido.getText().isEmpty()|| txtDireccion.getText().isEmpty()|| txtTelefono.getText().isEmpty())	
-		{
-		 JOptionPane.showMessageDialog(this, "No a llenado los espacios correctamente ");
-	  }
-		else
-		{
-			String idVenta = txtId_Venta.getText();
-	        String nombre = txtNombreCliente.getText();
-	        String apellido = txtApellido.getText();
-	        String direccion = txtDireccion.getText();
-	        String telefono = txtTelefono.getText();
-	        String fecha = txtFecha.getText();
-	        Cliente cliente = new Cliente(idVenta, nombre, apellido, direccion, telefono);
-	        clientes.add(cliente);
-	        Venta venta = new Venta(idVenta, cliente, new Date());
-	        ventas.add(venta);
-	        txtS.append("Venta registrada: " + venta + "\n");
-	        detalles.clear();
-	        for (DetalleVenta detalle : detalles) 
-	        {
-	            Producto vendido = detalle.getProducto();
-	            int cantidadVendida = detalle.getCantidad();
+    // Validación de campos obligatorios
+    if (txtId_Venta.getText().isEmpty() || txtCantidad.getText().isEmpty() ||
+        txtNombreCliente.getText().isEmpty() || txtApellido.getText().isEmpty() ||
+        txtDireccion.getText().isEmpty() || txtTelefono.getText().isEmpty()) {
+        
+        JOptionPane.showMessageDialog(this, " No ha llenado todos los campos obligatorios.");
+        return;
+    }
 
-	            	for (Producto p : almacen.getTodosLosProductos()) 
-	            	{
-	            		if (p.getIdProducto().equals(vendido.getIdProducto())) 
-	            		{
-	            			int nuevoStock = p.getStock() - cantidadVendida;
-	            			p.setStock(nuevoStock);
-	            			break;
-	                }
-	            }
-	        }
+    // Validación de producto seleccionado
+    if (cboPeluche.getSelectedItem() == null) {
+        JOptionPane.showMessageDialog(this, " No ha seleccionado ningún producto.");
+        return;
+    }
+
+    // Obtener el producto seleccionado
+    String idProducto = (String) cboPeluche.getSelectedItem();
+    Producto productoSeleccionado = null;
+    for (Producto p : almacen.getTodosLosProductos()) {
+        if (p.getIdProducto().equalsIgnoreCase(idProducto)) {
+            productoSeleccionado = p;
+            break;
+        }
+    }
+
+    if (productoSeleccionado == null) {
+        JOptionPane.showMessageDialog(this, " El producto no se encuentra disponible .");
+        return;
+    }
+
+    // Obtener la cantidad ingresada
+    int cantidad;
+    try {
+        cantidad = Integer.parseInt(txtCantidad.getText());
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, " La cantidad debe ser un número válido.");
+        return;
+    }
+
+    // Validar stock
+    if (productoSeleccionado.getStock() < cantidad) {
+        JOptionPane.showMessageDialog(this, " No hay stock suficiente para este producto.");
+        return;
+    }
+
+    // Reducir stock antes de registrar la venta
+    productoSeleccionado.setStock(productoSeleccionado.getStock() - cantidad);
+
+    // Crear el cliente
+    String idVenta = txtId_Venta.getText();
+    String nombre = txtNombreCliente.getText();
+    String apellido = txtApellido.getText();
+    String direccion = txtDireccion.getText();
+    String telefono = txtTelefono.getText();
+
+    Cliente cliente = new Cliente(idVenta, nombre, apellido, direccion, telefono);
+    clientes.add(cliente);
+
+    // Registrar venta
+    Venta venta = new Venta(idVenta, cliente, new Date());
+    // Registrar detalle de venta para que se guarde el producto y cantidad
+    venta.registrarDetalleVenta(productoSeleccionado, cantidad);
+    ventas.add(venta);
+
+    // Limpiar el área de texto antes de mostrar nueva información
+    txtS.setText("");
+
+    // Mostrar mensaje en la GUI con el stock actualizado
+    txtS.append(" Venta registrada:\n");
+    txtS.append("ID Venta: " + idVenta + "\n");
+    txtS.append("Cliente: " + nombre + " " + apellido + "\n");
+    txtS.append("Producto: " + productoSeleccionado.getNombre() + "\n");
+    txtS.append("Cantidad: " + cantidad + "\n");
+    txtS.append("Precio unitario: S/. " + productoSeleccionado.getPrecio() + "\n");
+    txtS.append("Subtotal: S/. " + (productoSeleccionado.getPrecio() * cantidad) + "\n");
+    txtS.append("Stock restante: " + productoSeleccionado.getStock() + "\n\n");
+
+    // Limpiar campos
+    txtCantidad.setText("");
+    cboPeluche.setSelectedIndex(-1);
+}
+
+	protected void do_comboBox_actionPerformed(ActionEvent e) {
+		int posi = cbActividad.getSelectedIndex();
+		
+		switch (posi) {
+		case 0:
+			
+			txtApellido.setEditable(true);
+			txtNombreCliente.setEditable(true);
+			txtCantidad.setEditable(true);
+			txtId_Venta.setEditable(true);
+			txtDireccion.setEditable(true);
+			txtTelefono.setEditable(true);
+			txtIdDetalleVenta.setEditable(true);
+			break;
+           
+			
+				case 1:
+					txtCantidad.setEditable(true);
+					
+					
+				break;
+
+
+			default:
+				
 		}
-  }
+		
+		
+	}
+	protected void do_btnMostrarVenta_actionPerformed(ActionEvent e) {
+		txtS.setText("");
+	    txtS.setText("==== LISTADO DE VENTAS ====\n");
+
+	    if (ventas.isEmpty()) {
+	        txtS.append("No hay ventas registradas.\n");
+	        return;
+	    }
+
+	    for (Venta v : ventas) {
+	        txtS.append("ID Venta: " + v.getIdVenta() + "\n");
+	        Cliente c = v.getCliente();
+	        txtS.append("Cliente: " + c.getNombre() + " " + c.getApellido() + "\n");
+	        txtS.append("Dirección: " + c.getDireccion() + "\n");
+	        txtS.append("Teléfono: " + c.getTelefono() + "\n");
+	        txtS.append("Fecha: " + v.getFecha() + "\n");
+
+	        ArrayList<DetalleVenta> detalles = v.getDetalles();
+	        
+
+	       
+	    }
+	}
  }

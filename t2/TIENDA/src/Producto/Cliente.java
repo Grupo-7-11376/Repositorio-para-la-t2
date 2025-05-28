@@ -43,6 +43,10 @@ public class Cliente {
 		this.direccion = direccion;
 		this.telefono = telefono;
 	}
-	
+	public class ClienteManager {
+	   
+	    public String toString() {
+	        return "Código: " + idCliente + "\nNombre: " + nombres;
+	    }
 
 }

@@ -1,5 +1,8 @@
 package Modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
 	private String id;
     private String nombre;
@@ -21,4 +24,7 @@ public class Cliente {
     public String toString() {
         return id + " - " + nombre + " " + apellido + " - Dirección: " + direccion + " - Tel: " + telefono;
     }
+    
+  
+    
 }

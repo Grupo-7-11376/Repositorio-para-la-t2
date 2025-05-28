@@ -21,4 +21,8 @@ public class DetalleVenta {
     public String toString() {
         return idDetalle + " - Producto: " + producto.getNombre() + " - Cant: " + cantidad + " - Subtotal: $" + calcularSubtotal();
     }
+	public Double calcularImporte() {
+		return producto.getPrecio() * cantidad;
+	
+	}
 }
